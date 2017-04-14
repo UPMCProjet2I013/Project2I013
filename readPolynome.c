@@ -2,25 +2,31 @@
 #include <stdlib.h>
 #include <math.h>
 
-void readPolynome(FILE *f, int *tab){
-  int deg;
-  fscanf(f,"%d",&deg);
-  tab=(int *)malloc(sizeof(int)*(deg+1));
+void readPolynome(FILE *f, int tab[], int deg){
   printf("Polynome de degre: %d\n",deg);
-  tab[0]=deg;
-  for(int i=1;i<=deg;i++){
+  int i;
+  for(i=0;i<=deg;i++){
     fscanf(f,"%d",&tab[i]);
   }
   printf("\n");
 }
 
-double evaluatePolynome(int *tab,double x){
+double evaluePolynome(int tab[],int deg,double x){
   double res;
-  int deg=tab[0];
-  for(int i=1;i<=deg;i++){
-    res+=tab[i]*pow(x,(double)(i-1);
+  int i;
+  for(i=0;i<=deg;i++){
+    res+=tab[i]*pow(x,(double)i);
   }
   return res;
+}
+
+int evaluePolynomeZp(int tab[],int deg,int x,int p){
+  int res;
+  int i;
+  for(i=0;i<=deg;i++){
+    res+=tab[i]*pow((double)x,(double)i);
+  }
+  return res%p;
 }
 
 int main(int argc, char const *argv[]) {
@@ -28,8 +34,11 @@ int main(int argc, char const *argv[]) {
   if(f==NULL){
     printf("ERROR\n");
   }
-  int *poly;
-  readPolynome(f,poly);
-  fclose(f);
+  int deg;
+  fscanf(f,"%d",&deg);
+  int poly[deg+1];
+  readPolynome(f,poly,deg);
+  printf("%lf\n",evaluePolynome(poly,deg,-1.5));
+  printf("%d\n",evaluePolynomeZp(poly,deg,1,5));
   return 0;
 }
