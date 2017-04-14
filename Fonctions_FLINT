@@ -3,6 +3,16 @@ Evaluation :
 Evalue un polynome poly au point val (dans les rationnels) et stocke le résultat dans output : 
 void  fmpz_poly_evaluate(fmpz_t  output , const  fmpz_poly_t  poly , const  fmpz_t  val)
 
+typedef struct
+{
+    fmpz_poly_t num;  
+    fmpz_t den;       
+} fmpq_poly_struct;
+
+typedef fmpq_poly_struct fmpq_poly_t[1];
+
+
+
 Evalue un polynome poly au point val modulo p (dans Z/pZ) et renvoie le résultat :
 unsigned  long  fmpz_poly_evaluate_mod(const  fmpz_poly_t  poly , unsigned  long p, unsigned  long val, pre_inv_t  pinv)
 L'argument pinv doit être entré pour calculer l'inverse de p que l'on peut faire avec la fonction : z_precompute_inverse.
