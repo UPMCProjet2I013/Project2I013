@@ -2,9 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-void readPolynome(FILE *f, int tab[], int deg){
+void readPolynome(FILE *f, int *tab){
+  int deg;
+  fscanf(f,"%d",&deg);
+  tab=(int *)malloc(int*(deg+1));
   printf("Polynome de degre: %d\n",deg);
-  for(int i=0;i<deg;i++){
+  tab[0]=deg;
+  for(int i=1;i<=deg;i++){
     fscanf(f,"%d",&tab[i]);
   }
   printf("\n");
@@ -23,10 +27,8 @@ int main(int argc, char const *argv[]) {
   if(f==NULL){
     printf("ERROR\n");
   }
-  int deg;
-  fscanf(f,"%d",&deg);
-  int poly[deg];
-  readPolynome(f,poly,deg);
+  int poly[];
+  readPolynome(f,poly);
   fclose(f);
   return 0;
 }
