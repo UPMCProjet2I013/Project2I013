@@ -6,3 +6,23 @@ void  fmpz_poly_evaluate(fmpz_t  output , const  fmpz_poly_t  poly , const  fmpz
 Evalue un polynome poly au point val modulo p (dans Z/pZ) et renvoie le résultat :
 unsigned  long  fmpz_poly_evaluate_mod(const  fmpz_poly_t  poly , unsigned  long p, unsigned  long val, pre_inv_t  pinv)
 L'argument pinv doit être entré pour calculer l'inverse de p que l'on peut faire avec la fonction : z_precompute_inverse.
+
+Now to use FLINT, simply include the appropriate header files for the FLINT modules
+you wish to use in your C program.  Then compile your program,  linking against the
+FLINT library, GMP/MPIR, MPFR and pthreads with the options
+-lflint -lmpfr
+-lgmp -lpthread
+.
+Note that you may have to set
+LD_LIBRARY_PATH
+or equivalent for your system to let
+the linker know where to find these libraries.  Please refer to your system documentation
+for how to do this.
+If you have any difficulties with conflicts with system headers on your machine, you can
+do the following in your code:
+#undef  ulong
+#define  ulong  ulongxx
+#include  <stdio.h>
+// other  system  headers
+#undef  ulong
+#define  ulong  mp_limb_
