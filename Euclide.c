@@ -9,7 +9,7 @@ void remplirPolynome(int *poly,fmpz_poly_t *x){
 	}
 }
 
-void euclideRest(int *polyA,int lenA,int *polyB,int lenB,fmpz_poly_t *r0,fmpz_poly_t *r1){
+void euclideRest(int *polyA,int lenA,int *polyB,int lenB,fmpz_poly_t *r0,fmpz_poly_t *r1){ //modif test while si zero
   fmpz_poly_t A;
   fmpz_poly_t B;
   fmpz_poly_init(A);
