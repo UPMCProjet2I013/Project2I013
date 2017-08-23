@@ -5,18 +5,24 @@
 #include "nmod_poly.h"
 
 void sousResultant(int *polyA, int *polyB, int *res){
-        fmpz_poly_t A;
-        fmpz_poly_t B;
-        fmpz_poly_init(A);
-        fmpz_poly_init(B);
-        fmpz_poly_t tmp;
-        fmpz_poly_init(tmp);
-        remplirPolynome(polyA,&A);
-        remplirPolynome(polyB,&B
-        fmpz r=1;
+        fmpq_poly_t A1;
+        fmpq_poly_t A2;
+        fmpq_poly_init(A1);
+        fmpq_poly_init(A2);
+        fmpq_poly_t A3;
+        fmpq_poly_init(A3);
+        remplirPolynome(polyA,&A1);
+        remplirPolynome(polyB,&A2);
+        fmpq R=1;
         int i=2;
-        while A
+        int n=len
+        while (
                         
                         
-                        ///suggestion : on connait suite des restes euclidiens de A et B : on applique betement la formule : 
-                        Res(A, B) = (−1)deg (A) deg (B)lcoeff(B)deg (A)−deg (R)Res(B, R), sans faire de while (a voir avec salome tests)
+                        
+                
+                
+                //div euclidienne : void  fmpq_poly_rem(fmpq_poly_t R, const  fmpq_poly_t  poly1 , const  fmpq_poly_t  poly2)
+                //deg polynome : slong fmpq_poly_degree(const fmpq_poly_t poly)  "slong=int" -->27.3
+                //recup enieme coeff : void  fmpq_poly_get_coeff_fmpq(fmpq_t x, const  fmpq_poly_t poly , slong n) Retrieves the nth coefficient of poly, in lowest terms -->27.7
+               //test poly nul : int  fmpq_poly_is_zero(const  fmpq_poly_t  poly) Returns 1 if poly is the zero polynomial, otherwise returns 0.
